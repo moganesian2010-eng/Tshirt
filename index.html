@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f3">
+  <meta name="description" content="Футболка horny alternative от mezamer. Размеры S, M, L и XL. 3 600 ₽.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="horny alternative — mezamer">
+  <meta property="og:description" content="Футболка mezamer · 3 600 ₽">
+  <meta property="og:image" content="./assets/horny-alternative.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23191919'/%3E%3Ctext x='32' y='45' fill='%23f7f8f3' font-family='Arial' font-size='43' font-weight='700' text-anchor='middle'%3Em%3C/text%3E%3C/svg%3E">
+  <title>horny alternative — mezamer</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./shop.js" defer></script>
+</head>
+<body>
+  <header class="shell header">
+    <a class="wordmark" href="#shop" aria-label="mezamer — магазин">mezamer<sup aria-hidden="true">®</sup></a>
+    <a class="cart-link" id="cart-link" href="#cart" aria-label="Корзина, товаров: 0">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 2.5h14l2 4v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-14l2-4Z"/>
+        <path d="M3 6.5h18M8 10a4 4 0 0 0 8 0"/>
+      </svg>
+      <span class="cart-count" id="header-count" aria-hidden="true">0</span>
+    </a>
+  </header>
+
+  <main class="shell">
+    <section class="product" id="product-page" aria-labelledby="product-title">
+      <img class="product-photo" src="./assets/horny-alternative.png" width="524" height="476" alt="Белая футболка с чёрной надписью horny alternative">
+      <div class="product-details">
+        <p class="eyebrow">mezamer / футболка</p>
+        <h1 id="product-title" tabindex="-1">horny alternative</h1>
+        <p class="product-price">3 600 ₽</p>
+        <form id="product-form">
+          <fieldset class="sizes">
+            <legend>Размер</legend>
+            <div class="size-options">
+              <label><input type="radio" name="size" value="S"><span>S</span></label>
+              <label><input type="radio" name="size" value="M"><span>M</span></label>
+              <label><input type="radio" name="size" value="L" checked><span>L</span></label>
+              <label><input type="radio" name="size" value="XL"><span>XL</span></label>
+            </div>
+          </fieldset>
+          <button class="primary" type="submit" data-action="add-to-cart">В корзину</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="cart-page" id="cart-page" aria-labelledby="cart-title" hidden>
+      <a class="back-link" href="#shop">Вернуться в магазин</a>
+      <h1 class="cart-title" id="cart-title" tabindex="-1">Корзина <sup id="cart-count"></sup></h1>
+      <div class="empty-cart" id="empty-cart" hidden>
+        <p>В корзине пока ничего нет.</p>
+        <a class="primary" href="#shop">К футболке</a>
+      </div>
+
+      <div class="cart-layout" id="cart-layout" hidden>
+        <ul class="cart-items" id="cart-items" aria-label="Товары в корзине"></ul>
+        <section class="order" aria-labelledby="order-title">
+          <h2 id="order-title">Ваш заказ</h2>
+          <dl class="order-prices">
+            <div class="order-subtotal">
+              <dt id="subtotal-label"></dt>
+              <dd id="subtotal"></dd>
+            </div>
+            <div class="order-total">
+              <dt>Итого</dt>
+              <dd id="total"></dd>
+            </div>
+          </dl>
+          <form class="checkout" id="checkout-form">
+            <label for="email">Электронная почта</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="mail@example.ru" aria-describedby="email-help" required>
+            <p id="email-help" class="field-help">Для связи по заказу и чека.</p>
+            <button class="primary" type="submit" data-action="preview-order">Проверить заказ</button>
+            <p class="field-help">Демо-режим. Данные проверяются в браузере.</p>
+            <p class="checkout-status" id="checkout-status" role="status" hidden></p>
+          </form>
+        </section>
+      </div>
+    </section>
+    <p class="sr-only" id="cart-status" role="status"></p>
+  </main>
+</body>
+</html>
