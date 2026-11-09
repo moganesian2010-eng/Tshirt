@@ -173,8 +173,6 @@ body:focus-within .intro { display: none; }
 }
 
 .size-options {
-  --size-index: 2;
-  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(44px, 1fr));
   width: min(100%, 244px);
@@ -183,21 +181,7 @@ body:focus-within .intro { display: none; }
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--panel);
-}
-
-.size-options:has(input[value="S"]:checked) { --size-index: 0; }
-.size-options:has(input[value="M"]:checked) { --size-index: 1; }
-.size-options:has(input[value="XL"]:checked) { --size-index: 3; }
-
-.size-options::before {
-  position: absolute;
-  inset: 4px auto 4px 4px;
-  width: calc((100% - 8px) / 4);
-  border-radius: inherit;
-  background: var(--ink);
-  content: "";
-  transform: translateX(calc(100% * var(--size-index)));
-  transition: transform .22s cubic-bezier(.22, 1, .36, 1);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .size-options label { position: relative; cursor: pointer; }
@@ -217,7 +201,10 @@ body:focus-within .intro { display: none; }
   font-size: 14px;
 }
 
-.size-options input:checked + span { color: var(--paper); }
+.size-options input:checked + span {
+  background: var(--ink);
+  color: var(--paper);
+}
 
 .size-options input:focus-visible + span {
   outline: 2px solid var(--ink);
@@ -243,6 +230,7 @@ body:focus-within .intro { display: none; }
 }
 
 .primary:hover { background: #343430; }
+.primary[data-action="buy"] { border-radius: 16px; }
 
 .order {
   position: fixed;
@@ -317,7 +305,6 @@ body:focus-within .intro { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none; }
-  .size-options::before { transition: none; }
 }
 
 @media (min-width: 760px) {
