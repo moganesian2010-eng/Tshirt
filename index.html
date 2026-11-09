@@ -108,8 +108,6 @@ a { color: inherit; }
   animation: rule-in .4s .16s ease-out both;
 }
 
-body:focus-within .intro { display: none; }
-
 @keyframes curtain {
   0%, 58% { transform: translateY(0); }
   100% { transform: translateY(-100%); visibility: hidden; }
@@ -446,18 +444,16 @@ body:focus-within .intro { display: none; }
       <div class="product-details">
         <h1 id="product-title">horny alternative</h1>
         <p class="product-price">3 600 ₽</p>
-        <form id="product-form">
-          <fieldset class="sizes">
-            <legend>Размер</legend>
-            <div class="size-options">
-              <label><input type="radio" name="size" value="S"><span>S</span></label>
-              <label><input type="radio" name="size" value="M"><span>M</span></label>
-              <label><input type="radio" name="size" value="L" checked><span>L</span></label>
-              <label><input type="radio" name="size" value="XL"><span>XL</span></label>
-            </div>
-          </fieldset>
-          <button class="primary" type="submit" data-action="buy" aria-haspopup="dialog">Купить</button>
-        </form>
+        <fieldset class="sizes">
+          <legend>Размер</legend>
+          <div class="size-options">
+            <label><input type="radio" name="size" value="S"><span>S</span></label>
+            <label><input type="radio" name="size" value="M"><span>M</span></label>
+            <label><input type="radio" name="size" value="L" checked><span>L</span></label>
+            <label><input type="radio" name="size" value="XL"><span>XL</span></label>
+          </div>
+        </fieldset>
+        <button class="primary" type="button" data-action="buy" aria-haspopup="dialog">Купить</button>
       </div>
     </section>
 
@@ -481,7 +477,8 @@ body:focus-within .intro { display: none; }
     </dialog>
   </main>
   <script>
-const productForm = document.getElementById('product-form');
+const intro = document.querySelector('.intro');
+const buyButton = document.querySelector('[data-action="buy"]');
 const order = document.getElementById('order');
 const orderSize = document.getElementById('order-size');
 const checkoutForm = document.getElementById('checkout-form');
@@ -489,6 +486,11 @@ const checkoutStatus = document.getElementById('checkout-status');
 const photos = document.querySelectorAll('#gallery-frame .product-photo');
 const photoArrows = document.querySelectorAll('#product-gallery [data-photo-step]');
 let photoIndex = 0;
+
+document.addEventListener('focusin', () => intro.remove(), { once: true });
+intro.addEventListener('animationend', (event) => {
+  if (event.target === intro) intro.remove();
+});
 
 for (const arrow of photoArrows) {
   arrow.addEventListener('click', () => {
@@ -499,9 +501,8 @@ for (const arrow of photoArrows) {
   });
 }
 
-productForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  orderSize.textContent = new FormData(productForm).get('size');
+buyButton.addEventListener('click', () => {
+  orderSize.textContent = document.querySelector('.size-options input:checked').value;
   checkoutStatus.hidden = true;
   order.showModal();
 });
