@@ -132,7 +132,10 @@ body:focus-within .intro { display: none; }
   padding: 53px 0 48px;
 }
 
-.product-gallery { width: min(100%, 524px); }
+.product-gallery {
+  position: relative;
+  width: min(100%, 524px);
+}
 
 .gallery-frame { aspect-ratio: 524 / 476; }
 
@@ -143,10 +146,12 @@ body:focus-within .intro { display: none; }
 }
 
 .gallery-options {
+  position: absolute;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 8px;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
 }
 
 .gallery-options button {
@@ -159,6 +164,7 @@ body:focus-within .intro { display: none; }
   border-radius: 50%;
   background: var(--paper);
   color: var(--ink);
+  pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -180,7 +186,6 @@ body:focus-within .intro { display: none; }
 }
 
 .product h1 {
-  margin-top: 12px;
   font-size: clamp(24px, 6.8vw, 32px);
   font-weight: 400;
   line-height: 1.12;
@@ -433,7 +438,6 @@ body:focus-within .intro { display: none; }
         </div>
       </div>
       <div class="product-details">
-        <p class="eyebrow">mezamer / футболка</p>
         <h1 id="product-title">horny alternative</h1>
         <p class="product-price">3 600 ₽</p>
         <form id="product-form">
