@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#2446a2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="7kiss">
   <title>7kiss — Дыши. Меняй цвет.</title>
   <meta name="description" content="7kiss — маски-балаклавы, меняющие цвет при дыхании.">
   <meta property="og:title" content="7kiss — Дыши. Меняй цвет.">
@@ -32,7 +33,7 @@ p, h1, h2 { margin: 0; }
 [hidden] { display: none !important; }
 .skip-link { position: fixed; top: -80px; left: 16px; z-index: 100; padding: 12px 24px; background: #fff; color: #000; }
 .skip-link:focus { top: 16px; }
-.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-height); padding: 0 5%; display: flex; align-items: center; gap: 12px; background-color: var(--paper); }
+.site-header { height: var(--header-height); padding: 0 5%; display: flex; align-items: center; gap: 12px; }
 .wordmark { display: inline-flex; align-items: baseline; flex-shrink: 0; gap: 2px; white-space: nowrap; font: 900 clamp(2.25rem, 4vw, 3.1rem)/1 Arial, sans-serif; }
 .wordmark-seven { letter-spacing: -.075em; }
 .wordmark-kiss { padding-right: .1em; font: 400 1.48em/.8 '7kiss Script', cursive; letter-spacing: 0; }
@@ -340,11 +341,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   const buttons = document.querySelectorAll('.color-option[data-color]');
   if (!photo || !dialog || !buyButton) return;
   function setPageColor(color) {
-    const root = document.documentElement;
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
-    root.style.setProperty('--paper', color);
-    // Commit one solid color for the page, safe area and browser tint in the same task.
-    themeMeta?.setAttribute('content', color);
+    document.documentElement.style.setProperty('--paper', color);
   }
 
   function selectColor(id) {
